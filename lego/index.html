@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mudaber Jamshaid — Curriculum &amp; Instructional Design</title>
+<style>
+  :root { --bg:#fff; --fg:#17242e; --muted:#5c6b76; --line:#e2e7ec; --accent:#b8402f; --accent2:#1f5f8b; --card:#f7f9fb; --tag:#eef3f7; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#0f151a; --fg:#e6edf3; --muted:#94a3af; --line:#26313a; --accent:#e0715f; --accent2:#5aa9e0; --card:#151d24; --tag:#1a2831; } }
+  :root[data-theme="dark"] { --bg:#0f151a; --fg:#e6edf3; --muted:#94a3af; --line:#26313a; --accent:#e0715f; --accent2:#5aa9e0; --card:#151d24; --tag:#1a2831; }
+  :root[data-theme="light"] { --bg:#fff; --fg:#17242e; --muted:#5c6b76; --line:#e2e7ec; --accent:#b8402f; --accent2:#1f5f8b; --card:#f7f9fb; --tag:#eef3f7; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.55; }
+  .wrap { max-width:800px; margin:0 auto; padding:46px 22px 70px; }
+  h1 { font-size:1.9rem; margin:0 0 4px; letter-spacing:-0.01em; }
+  .role { color:var(--accent2); font-weight:600; }
+  .links { margin-top:10px; font-size:.9rem; color:var(--muted); }
+  .links a { color:var(--accent2); text-decoration:none; }
+  .lede { margin:22px 0 6px; font-size:1.06rem; }
+  .feature { display:block; background:var(--card); border:1px solid var(--line); border-left:3px solid var(--accent); border-radius:12px; padding:18px 20px; margin:18px 0; text-decoration:none; color:inherit; }
+  .feature .k { color:var(--accent); font-size:.72rem; text-transform:uppercase; letter-spacing:.12em; font-weight:700; }
+  .feature h2 { margin:4px 0 4px; font-size:1.15rem; color:var(--fg); }
+  .feature p { margin:0; color:var(--muted); font-size:.94rem; }
+  .feature .go { color:var(--accent2); font-weight:600; font-size:.9rem; margin-top:8px; display:inline-block; }
+  h3 { font-size:1.15rem; margin:34px 0 4px; }
+  .sub { color:var(--muted); font-size:.9rem; margin:0 0 8px; }
+  .case { border-top:1px solid var(--line); padding-top:16px; margin-top:18px; }
+  .case h4 { margin:0 0 2px; font-size:1rem; }
+  .case .meta { color:var(--muted); font-size:.82rem; margin-bottom:6px; }
+  .case p { margin:5px 0; }
+  .case .label { font-weight:600; color:var(--accent2); }
+  .case a { color:var(--accent2); }
+  footer { margin-top:40px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:.84rem; }
+  .toggle { position:fixed; top:14px; right:14px; background:var(--card); border:1px solid var(--line); color:var(--fg); border-radius:20px; padding:5px 12px; font-size:.8rem; cursor:pointer; }
+</style>
+</head>
+<body>
+<button class="toggle" onclick="(function(){var r=document.documentElement;var d=(r.getAttribute('data-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));r.setAttribute('data-theme',d==='dark'?'light':'dark');})()">theme</button>
+<div class="wrap">
+  <h1>Mudaber Jamshaid</h1>
+  <div class="role">Curriculum &amp; Instructional Design &middot; K-8 Science, Computer Science &amp; AI</div>
+  <div class="links">Boston, MA &middot; <a href="mailto:mudaber.jamshaid@gmail.com">mudaber.jamshaid@gmail.com</a> &middot; <a href="http://linkedin.com/in/mudaberjamshaid">LinkedIn</a> &middot; <a href="../">Full portfolio</a></div>
+
+  <p class="lede">A curriculum leader who designs standards-aligned units, teaches hands-on STEM through inquiry, and builds the playful learning experiences that curriculum describes. Here is a sample of the craft for a K-8 Computer Science and AI role, plus the learning products behind it.</p>
+
+  <a class="feature" href="../lego-curriculum-sample.html">
+    <div class="k">Curriculum sample</div>
+    <h2>Is It Alive? Teaching an AI to Tell</h2>
+    <p>A hands-on, five-session K-8 Computer Science and AI unit where students train an image classifier with their own examples, watch it fail, and fix it, learning how a model actually works. Standards-tagged to CSTA, ISTE, and NGSS, with formative assessment and differentiation.</p>
+    <span class="go">Read the full unit &rarr;</span>
+  </a>
+
+  <h3>The learning products behind it</h3>
+  <p class="sub">I do not just write curriculum; I build the playful, hands-on experiences it points to.</p>
+
+  <div class="case">
+    <h4>Games-based learning platform</h4>
+    <div class="meta">Independent build, used at a charter network</div>
+    <p><span class="label">What:</span> a platform that turns screen time into structured, playful practice with timed study-break interventions, built to pull in the students who tune out of conventional instruction.</p>
+    <p><span class="label">Why it maps:</span> the same conviction as learning through play, that students learn best by actively doing rather than passively receiving.</p>
+  </div>
+
+  <div class="case">
+    <h4>QuriOS</h4>
+    <div class="meta">Playful adaptive learning product for children &middot; <a href="https://qurios.io">qurios.io</a></div>
+    <p><span class="label">What:</span> an adaptive learning system for kids with per-student adaptation and a parent console that balances play and structured practice, deciding where technology helps and where a human should stay in the loop.</p>
+    <p><span class="label">Why it maps:</span> a hands-on, child-centered product judged by whether children build real skills, not screen minutes.</p>
+  </div>
+
+  <div class="case">
+    <h4>Credentials</h4>
+    <div class="meta">The record behind the craft</div>
+    <p>Harvard Ed.M. in Learning Design. Curriculum leadership across a 380,000-student network aligned to IB and Cambridge standards. Hands-on STEM teaching at a science museum. A K-12 Computer Science and AI-literacy curriculum I founded. Massachusetts DESE Ed Prep Reviewer (standards-based program evaluation). 8 peer-reviewed publications on AI in education.</p>
+  </div>
+
+  <footer>
+    Tailored for the LEGO Education Senior Curriculum Manager role. <a href="../">See the full portfolio</a> &middot; <a href="mailto:mudaber.jamshaid@gmail.com">mudaber.jamshaid@gmail.com</a>
+  </footer>
+</div>
+</body>
+</html>
