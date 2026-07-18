@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>K-8 Curriculum Sample — Mudaber Jamshaid</title>
+<style>
+  :root { --bg:#fff; --fg:#17242e; --muted:#5c6b76; --line:#e2e7ec; --accent:#b8402f;
+          --accent2:#1f5f8b; --card:#f7f9fb; --tag:#eef3f7; --good:#1f8b5f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0f151a; --fg:#e6edf3; --muted:#94a3af; --line:#26313a; --accent:#e0715f;
+            --accent2:#5aa9e0; --card:#151d24; --tag:#1a2831; --good:#4fd0a0; } }
+  :root[data-theme="dark"] { --bg:#0f151a; --fg:#e6edf3; --muted:#94a3af; --line:#26313a; --accent:#e0715f; --accent2:#5aa9e0; --card:#151d24; --tag:#1a2831; --good:#4fd0a0; }
+  :root[data-theme="light"] { --bg:#fff; --fg:#17242e; --muted:#5c6b76; --line:#e2e7ec; --accent:#b8402f; --accent2:#1f5f8b; --card:#f7f9fb; --tag:#eef3f7; --good:#1f8b5f; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.55; }
+  .wrap { max-width:800px; margin:0 auto; padding:44px 22px 72px; }
+  .back { font-size:.85rem; color:var(--accent2); text-decoration:none; }
+  h1 { font-size:1.7rem; margin:14px 0 2px; letter-spacing:-0.01em; }
+  .kicker { color:var(--accent); font-weight:600; font-size:.8rem; text-transform:uppercase; letter-spacing:.12em; }
+  .meta { color:var(--muted); font-size:.9rem; margin:6px 0 4px; }
+  .note { background:var(--card); border-left:3px solid var(--accent2); padding:10px 14px; border-radius:0 8px 8px 0; font-size:.9rem; margin:16px 0; }
+  h2 { font-size:1.05rem; margin:30px 0 6px; padding-bottom:4px; border-bottom:1px solid var(--line); }
+  h3 { font-size:.98rem; margin:18px 0 4px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:12px; margin:12px 0; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px 16px; }
+  .card .h { font-weight:600; font-size:.9rem; margin-bottom:4px; }
+  ul,ol { margin:6px 0 6px 20px; } li { margin:4px 0; }
+  .tags { display:flex; flex-wrap:wrap; gap:6px; margin:8px 0; }
+  .tag { background:var(--tag); border:1px solid var(--line); color:var(--fg); font-size:.72rem; padding:3px 9px; border-radius:20px; }
+  .step { border-left:2px solid var(--accent); padding:2px 0 2px 14px; margin:12px 0; }
+  .step .t { font-weight:600; }
+  .step .time { color:var(--muted); font-size:.8rem; }
+  table { border-collapse:collapse; width:100%; font-size:.86rem; margin:8px 0; display:block; overflow-x:auto; }
+  th,td { border:1px solid var(--line); padding:7px 9px; text-align:left; vertical-align:top; }
+  th { background:var(--tag); }
+  footer { margin-top:40px; padding-top:16px; border-top:1px solid var(--line); color:var(--muted); font-size:.84rem; }
+  a { color:var(--accent2); }
+  .toggle { position:fixed; top:14px; right:14px; background:var(--card); border:1px solid var(--line); color:var(--fg); border-radius:20px; padding:5px 12px; font-size:.8rem; cursor:pointer; }
+</style>
+</head>
+<body>
+<button class="toggle" onclick="(function(){var r=document.documentElement;var d=(r.getAttribute('data-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));r.setAttribute('data-theme',d==='dark'?'light':'dark');})()">theme</button>
+<div class="wrap">
+  <a class="back" href="./">&larr; Back to portfolio</a>
+  <div class="kicker" style="margin-top:16px">Curriculum sample</div>
+  <h1>Is It Alive? Teaching an AI to Tell</h1>
+  <div class="meta">A hands-on K-8 Computer Science &amp; AI unit &middot; Grades 4-6 &middot; 5 sessions of 45 minutes</div>
+
+  <div class="note">I wrote this sample to show how I design a build-based, standards-aligned unit: how a young learner uncovers what machine learning actually is by training a classifier with their own hands, no code required. It is illustrative, written for this application, not a published LEGO Education product.</div>
+
+  <h2>The big idea</h2>
+  <p>Students act as the teacher of a simple image classifier. By collecting their own examples, testing the model, watching it fail, and fixing it, they discover the core truth of machine learning: a model only knows what it has been shown, and the human decides what "good" looks like. The unit ends with each student writing one rule for using AI responsibly, drawn from something their own model got wrong.</p>
+
+  <h2>Standards alignment</h2>
+  <div class="tags">
+    <span class="tag">CSTA 1B-AP-09 (models &amp; simulations)</span>
+    <span class="tag">CSTA 1B-IC-18 (computing &amp; society)</span>
+    <span class="tag">ISTE 1.5 Computational Thinker</span>
+    <span class="tag">ISTE 1.3 Knowledge Constructor</span>
+    <span class="tag">NGSS SEP-6 (constructing explanations)</span>
+    <span class="tag">NGSS SEP-4 (analyzing &amp; interpreting data)</span>
+  </div>
+  <p class="meta">These are the frameworks the unit is built to. NGSS Science and Engineering Practices carry the "collect data, test, revise" spine; CSTA and ISTE carry the computing and computational-thinking outcomes.</p>
+
+  <h2>Learning objectives</h2>
+  <p>By the end, a student can:</p>
+  <ul>
+    <li>Explain, in their own words, that a model learns from examples a person chooses.</li>
+    <li>Improve a model's accuracy by changing its training data, not its "settings."</li>
+    <li>Identify one case their model gets wrong and explain why, using evidence.</li>
+    <li>State one responsible-use rule that follows from that failure.</li>
+  </ul>
+
+  <h2>The five sessions</h2>
+  <div class="step"><span class="time">Session 1 &middot; 45 min</span><div class="t">Sorting without rules</div>
+    Students hand-sort a pile of objects (or picture cards) into two groups, then try to write the exact rule they used. They discover the rule is hard to pin down, which sets up why we would want a machine to learn from examples instead.</div>
+  <div class="step"><span class="time">Session 2 &middot; 45 min</span><div class="t">Training the machine</div>
+    Using a no-code image trainer, teams collect and label their own examples for two categories and train a classifier. First contact with "the model learns from what I give it."</div>
+  <div class="step"><span class="time">Session 3 &middot; 45 min</span><div class="t">Breaking it on purpose</div>
+    Teams try to fool their own model and log every failure. The engineering practice here is deliberate: predict, test, observe, record.</div>
+  <div class="step"><span class="time">Session 4 &middot; 45 min</span><div class="t">Fixing it with data</div>
+    Teams add examples to fix their failures and re-test, charting accuracy before and after. The insight lands: you improve the model by improving its data.</div>
+  <div class="step"><span class="time">Session 5 &middot; 45 min</span><div class="t">One honest rule</div>
+    Each student writes a single responsible-use rule tied to a real failure their model had, and the class builds a shared "how we use AI" wall.</div>
+
+  <h2>Formative assessment</h2>
+  <table>
+    <tr><th>Signal</th><th>Looks like</th><th>When</th></tr>
+    <tr><td>Model-as-learner understanding</td><td>Student changes data (not "settings") to fix an error</td><td>Session 4 exit</td></tr>
+    <tr><td>Evidence-based explanation</td><td>Cites a specific failed example to explain a limitation</td><td>Session 3-5</td></tr>
+    <tr><td>Responsible-use transfer</td><td>Rule is traceable to a real failure, not a slogan</td><td>Session 5 artifact</td></tr>
+  </table>
+
+  <h2>Differentiation &amp; access</h2>
+  <div class="grid">
+    <div class="card"><div class="h">Emerging readers</div>Picture-card sorting and spoken explanations replace written logs; sentence stems for the responsible-use rule.</div>
+    <div class="card"><div class="h">Stretch</div>Teams introduce a deliberately biased training set and predict the failure before testing it.</div>
+    <div class="card"><div class="h">Multilingual learners</div>Category labels in home language first; the build-and-test loop carries meaning without heavy text.</div>
+  </div>
+
+  <h2>Why this shape</h2>
+  <p>Every session is a build-test-revise loop, because the fastest way to understand a model is to be the one training it and watching it fail. The abstract idea, that AI reflects the data and the values behind it, arrives through the student's own hands, which is how confidence and creativity actually form. That is the pedagogy I would bring to a K-8 Computer Science and AI curriculum.</p>
+
+  <footer>
+    Sample by Mudaber Jamshaid for the LEGO Education Senior Curriculum Manager application.
+    <a href="./">Portfolio home</a> &middot; <a href="mailto:mudaber.jamshaid@gmail.com">mudaber.jamshaid@gmail.com</a>
+  </footer>
+</div>
+</body>
+</html>
