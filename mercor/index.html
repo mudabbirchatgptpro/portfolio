@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mudaber Jamshaid — Instructional Design for AI Training Data</title>
+<style>
+  :root { --bg:#ffffff; --fg:#17242e; --muted:#5c6b76; --line:#e2e7ec;
+    --accent:#3b4fb0; --accent-soft:#eceefb; --card:#f7f8fc; --good:#1f8b6f; --bad:#c9564a; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg:#0f151a; --fg:#e6edf3; --muted:#94a3af; --line:#26313a;
+      --accent:#8f9cf0; --accent-soft:#171d33; --card:#151d24; --good:#4fd0a8; --bad:#e68075; } }
+  :root[data-theme="dark"] { --bg:#0f151a; --fg:#e6edf3; --muted:#94a3af; --line:#26313a; --accent:#8f9cf0; --accent-soft:#171d33; --card:#151d24; --good:#4fd0a8; --bad:#e68075; }
+  :root[data-theme="light"] { --bg:#ffffff; --fg:#17242e; --muted:#5c6b76; --line:#e2e7ec; --accent:#3b4fb0; --accent-soft:#eceefb; --card:#f7f8fc; --good:#1f8b6f; --bad:#c9564a; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; line-height:1.55; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:820px; margin:0 auto; padding:46px 22px 72px; }
+  h1 { font-size:1.95rem; margin:0 0 4px; letter-spacing:-0.01em; }
+  .role { color:var(--accent); font-weight:600; font-size:1.03rem; }
+  .links { margin-top:11px; font-size:.9rem; color:var(--muted); }
+  .links a { color:var(--accent); text-decoration:none; }
+  .links a:hover { text-decoration:underline; }
+  .lede { margin:22px 0 6px; font-size:1.07rem; }
+  h2 { font-size:1.15rem; margin:40px 0 6px; letter-spacing:.02em; }
+  h2 .tag { font-size:.7rem; text-transform:uppercase; letter-spacing:.12em; color:var(--muted); font-weight:600; }
+  .sub { color:var(--muted); font-size:.9rem; margin:0 0 14px; }
+  .demo { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:20px; margin-top:10px; }
+  .qa { border:1px solid var(--line); border-radius:10px; padding:12px 14px; background:var(--bg); margin-bottom:14px; font-size:.95rem; }
+  .qa .u { color:var(--muted); }
+  .qa .a { margin-top:7px; }
+  .rubric { font-weight:600; margin:4px 0 10px; }
+  .rubric .v { color:var(--accent); }
+  .opts { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; }
+  .opts button { font-size:1.05rem; padding:11px 0; border:1px solid var(--line); background:var(--bg); color:var(--fg); border-radius:9px; cursor:pointer; transition:.15s; }
+  .opts button:hover { border-color:var(--accent); background:var(--accent-soft); }
+  .opts button.sel { border-color:var(--accent); background:var(--accent); color:#fff; }
+  .checks { display:flex; flex-direction:column; gap:9px; margin-bottom:4px; }
+  .checks label { display:flex; align-items:center; gap:10px; font-size:.96rem; padding:9px 12px; border:1px solid var(--line); border-radius:9px; background:var(--bg); cursor:pointer; }
+  .checks input { width:17px; height:17px; accent-color:var(--accent); }
+  .go { margin-top:14px; }
+  .go button { font-size:.95rem; font-weight:600; padding:10px 18px; border:none; border-radius:9px; background:var(--accent); color:#fff; cursor:pointer; }
+  .go button:disabled { opacity:.45; cursor:default; }
+  .reveal { margin-top:16px; display:none; }
+  .scores { display:flex; gap:6px; flex-wrap:wrap; margin:8px 0; }
+  .chip { font-size:.82rem; font-variant-numeric:tabular-nums; padding:5px 9px; border-radius:7px; background:var(--accent-soft); color:var(--fg); border:1px solid var(--line); }
+  .chip.you { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .meterrow { display:flex; justify-content:space-between; font-size:.82rem; color:var(--muted); margin-top:12px; }
+  .meter { height:13px; border-radius:8px; background:var(--accent-soft); overflow:hidden; margin:6px 0 2px; }
+  .meter > span { display:block; height:100%; width:0%; transition:width .6s ease; }
+  .signal { font-weight:600; margin-top:8px; }
+  .signal.clean { color:var(--good); } .signal.noisy { color:var(--bad); } .signal.mid { color:var(--accent); }
+  .note { font-size:.85rem; color:var(--muted); margin-top:12px; }
+  .takeaway { border-left:3px solid var(--accent); padding:12px 16px; margin-top:16px; background:var(--accent-soft); border-radius:0 10px 10px 0; font-size:.98rem; display:none; }
+  .case { border-top:1px solid var(--line); padding-top:18px; margin-top:22px; }
+  .case h3 { margin:0 0 2px; font-size:1.05rem; }
+  .case .meta { color:var(--muted); font-size:.82rem; margin-bottom:8px; }
+  .case p { margin:6px 0; }
+  .case .label { font-weight:600; color:var(--accent); }
+  .case .links a { color:var(--accent); text-decoration:none; font-size:.88rem; }
+  footer { margin-top:46px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
+  .toggle { position:fixed; top:14px; right:14px; background:var(--card); border:1px solid var(--line); color:var(--fg); border-radius:20px; padding:5px 12px; font-size:.8rem; cursor:pointer; }
+</style>
+</head>
+<body>
+<button class="toggle" onclick="(function(){var r=document.documentElement;var d=(r.getAttribute('data-theme')||(window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'));r.setAttribute('data-theme',d==='dark'?'light':'dark');})()">theme</button>
+<div class="wrap">
+  <header>
+    <h1>Mudaber Jamshaid</h1>
+    <div class="role">Instructional Design for AI Training Data &middot; Rubrics, Academies, Certification</div>
+    <div class="links">
+      Boston, MA (relocating to San Francisco) &middot; <a href="mailto:mudaber.jamshaid@gmail.com">mudaber.jamshaid@gmail.com</a>
+      &middot; <a href="http://linkedin.com/in/mudaberjamshaid">LinkedIn</a>
+      &middot; <a href="https://scholar.google.com/citations?user=831zUVYAAAAJ">Scholar</a>
+      &middot; <a href="../">Full portfolio</a>
+    </div>
+  </header>
+
+  <p class="lede">Mercor's data quality comes down to one thing: whether thousands of experts, following the same rubric, score the same answer the same way. When they do, the model learns a clean signal. When they do not, it learns noise. My job is to write the instruction that gets them to agree. Below is a live piece of that idea you can try, then things I have built.</p>
+
+  <h2><span class="tag">Live demo</span><br>Why the rubric is the whole job</h2>
+  <p class="sub">You are one of several experts grading an AI answer for a training set. Score it twice, once on a vague rubric and once on a sharp one, and watch what happens to the agreement between reviewers.</p>
+
+  <div class="demo" id="demo">
+    <div class="qa">
+      <div class="u"><b>User:</b> What are the main terms of the 30-year fixed mortgage you recommend?</div>
+      <div class="a"><b>AI answer:</b> This is a 30-year fixed-rate mortgage at an APR of 6.9%. The monthly payment covers principal and interest, while property taxes and homeowner's insurance are collected separately through an escrow account.</div>
+    </div>
+
+    <div id="stage"></div>
+
+    <div class="reveal" id="reveal">
+      <div id="revealText"></div>
+      <div class="scores" id="scores"></div>
+      <div class="meterrow"><span>Reviewer agreement</span><span id="agrPct">0%</span></div>
+      <div class="meter"><span id="agrBar"></span></div>
+      <div class="signal" id="signal"></div>
+      <div class="go" id="next"></div>
+    </div>
+
+    <div class="takeaway" id="takeaway">
+      That gap between the first rubric and the second is where a Learning Designer lives. Multiply it across 30,000 experts and it is the difference between data a lab keeps and data it sends back. Writing the guideline, the rubric, and the check that gets reviewers to agree, then certifying that they can, is the work I want to do here.
+    </div>
+
+    <div class="note">The other experts' scores here are illustrative, but the effect is real: inter-rater agreement is what turns human judgment into a training signal a model can use.</div>
+  </div>
+
+  <h2><span class="tag">Selected work</span></h2>
+
+  <div class="case">
+    <h3>Data labeling and evaluation pipeline</h3>
+    <div class="meta">Independent build &middot; rubric-driven annotation at scale</div>
+    <p><span class="label">Problem:</span> a labeling specification that reads clearly to its author still produces inconsistent labels once non-specialists and AI agents run it at volume.</p>
+    <p><span class="label">Built:</span> a two-pass system that turns an annotation spec into step-by-step instructions workers and agents apply consistently to label and evaluate documents, with a second review pass that catches where the spec quietly breaks down.</p>
+    <p><span class="label">Why it maps:</span> this is your project-level instructional design in miniature, the exact loop of writing guidelines, finding where they fail, and tightening them until the output is reliable.</p>
+  </div>
+
+  <div class="case">
+    <h3>Instructional playbooks across a six-country network</h3>
+    <div class="meta">Beaconhouse School System &middot; 380,000+ students, 1,500+ staff</div>
+    <p><span class="label">Problem:</span> toolkits that worked at one flagship campus fell apart when a teacher on another continent used them without the author in the room.</p>
+    <p><span class="label">Built:</span> standardized playbooks, facilitator guides, and assessment rubrics, pressure-tested until someone I had never met produced the right result from them, then deployed across campuses in six countries.</p>
+    <p><span class="label">Why it maps:</span> the same test your talent experts face, consistent performance from people following instructions cold, at the scale your academies need.</p>
+  </div>
+
+  <div class="case">
+    <h3>Adaptive tutoring engine with certification-style mastery</h3>
+    <div class="meta">Independent build &middot; learning science + full-stack</div>
+    <p><span class="label">Problem:</span> most training programs confirm that someone is familiar with a skill, not that they can actually do it well enough to be trusted with harder work.</p>
+    <p><span class="label">Built:</span> an engine with a Bayesian mastery model and item generation that keeps a learner at the edge of their ability and only advances them once the estimate says they have truly mastered a skill, not merely seen it.</p>
+    <p><span class="label">Why it maps:</span> this is the machinery behind assessments and certification that validate a talent expert is ready for a project type, rather than guessing. <a href="../#demo">Try the mastery mechanic on the main portfolio.</a></p>
+  </div>
+
+  <div class="case">
+    <h3>Published research: preparing humans to oversee AI</h3>
+    <div class="meta">Peer-reviewed &middot; 100+ citations across 8 papers, h-index 5</div>
+    <p><span class="label">What:</span> a competency framework for human oversight of agentic AI workplaces, on exactly the question Mercor is built around, which parts of judgment stay human and how you train and verify them.</p>
+    <p><span class="label">Why it maps:</span> I do not just build the instruction, I study what makes human judgment reliable enough to teach a model. <a href="https://scholar.google.com/citations?user=831zUVYAAAAJ">Publications on Scholar.</a></p>
+  </div>
+
+  <footer>
+    Built by Mudaber Jamshaid. This page and the demo are self-contained and run entirely in your browser.
+    Harvard Ed.M., Learning Design, Innovation and Technology. Academic collaborator on AI-output evaluation at MIT's Martin Trust Center.
+  </footer>
+</div>
+
+<script>
+// --- Rubric-clarity demo: vague rubric scatters reviewers, sharp rubric converges them ---
+var others1 = [2,3,3,4,5,3];               // six other experts, vague 1-5 rubric
+var others2 = [2,2,2,2,3,2];               // six other experts, sharp 3-point rubric (answer meets 2 of 3)
+var stageEl = document.getElementById('stage');
+var revealEl = document.getElementById('reveal');
+var round = 1;
+var youPick = null, youChecks = [false,false,false];
+
+function stdev(arr){
+  var m = arr.reduce(function(a,b){return a+b;},0)/arr.length;
+  var v = arr.reduce(function(a,b){return a+(b-m)*(b-m);},0)/arr.length;
+  return Math.sqrt(v);
+}
+function agreement(arr){
+  // map spread to 0-100; a 1-5 style scale saturates around stdev 1.6
+  var a = 1 - stdev(arr)/1.6;
+  return Math.max(4, Math.min(99, Math.round(a*100)));
+}
+
+function renderRound1(){
+  youPick = null;
+  stageEl.innerHTML =
+    '<div class="rubric">Rubric <span class="v">v1</span>: overall, how good is this answer? '
+    + '<span class="sub" style="font-weight:400">(1 = poor, 5 = excellent)</span></div>'
+    + '<div class="opts" id="opts"></div>'
+    + '<div class="go"><button id="submit1" disabled>Submit score</button></div>';
+  var opts = document.getElementById('opts');
+  [1,2,3,4,5].forEach(function(n){
+    var b = document.createElement('button');
+    b.textContent = n;
+    b.onclick = function(){
+      youPick = n;
+      Array.prototype.forEach.call(opts.children,function(c){c.classList.remove('sel');});
+      b.classList.add('sel');
+      document.getElementById('submit1').disabled = false;
+    };
+    opts.appendChild(b);
+  });
+  document.getElementById('submit1').onclick = function(){
+    var all = others1.concat([youPick]);
+    showReveal(
+      'Six other experts scored the same answer:',
+      others1, youPick, agreement(all),
+      'Six experts, four different scores. "Good" means something different to each of them, so the model gets a signal it cannot learn from cleanly. The rubric, not the reviewers, is the problem.',
+      'Now try a sharper rubric on the same answer', renderRound2
+    );
+  };
+}
+
+function renderRound2(){
+  youChecks = [false,false,false];
+  var items = [
+    'States the exact APR (6.9%)',
+    'Names the loan term (30 years)',
+    'Flags any prepayment penalty'
+  ];
+  var html = '<div class="rubric">Rubric <span class="v">v2</span>: score the same answer on three observable checks.</div><div class="checks">';
+  items.forEach(function(t,i){
+    html += '<label><input type="checkbox" data-i="'+i+'"> '+t+'</label>';
+  });
+  html += '</div><div class="go"><button id="submit2">Submit score</button></div>';
+  stageEl.innerHTML = html;
+  Array.prototype.forEach.call(stageEl.querySelectorAll('input'),function(inp){
+    inp.onchange = function(){ youChecks[+inp.getAttribute('data-i')] = inp.checked; };
+  });
+  document.getElementById('submit2').onclick = function(){
+    var youScore = youChecks.reduce(function(a,b){return a+(b?1:0);},0);
+    var all = others2.concat([youScore]);
+    showReveal(
+      'The same six experts, scoring on the sharp rubric (out of 3):',
+      others2, youScore, agreement(all),
+      'Same answer, same experts. Each line names something you can point to in the text, so everyone lands in the same place, even on the prepayment penalty the answer never mentions. That agreement is a signal the model can actually learn from. Getting a rubric to this point is the job.',
+      null, null
+    );
+  };
+}
+
+function showReveal(caption, arr, you, agr, msg, nextLabel, nextFn){
+  document.getElementById('revealText').innerHTML = '<div style="font-size:.9rem;color:var(--muted)">'+caption+'</div>';
+  var scores = document.getElementById('scores');
+  scores.innerHTML = '';
+  arr.forEach(function(s){
+    var c = document.createElement('span'); c.className='chip'; c.textContent=s; scores.appendChild(c);
+  });
+  var yc = document.createElement('span'); yc.className='chip you'; yc.textContent='you: '+you; scores.appendChild(yc);
+
+  var bar = document.getElementById('agrBar');
+  document.getElementById('agrPct').textContent = agr+'%';
+  bar.style.width = agr+'%';
+  bar.style.background = agr>=78 ? 'var(--good)' : (agr>=55 ? 'var(--accent)' : 'var(--bad)');
+
+  var sig = document.getElementById('signal');
+  if (agr>=78){ sig.className='signal clean'; sig.textContent='Training signal: clean. The model learns what "good" means.'; }
+  else if (agr>=55){ sig.className='signal mid'; sig.textContent='Training signal: usable, with noise.'; }
+  else { sig.className='signal noisy'; sig.textContent='Training signal: noisy. The model cannot tell what was rewarded.'; }
+
+  document.getElementById('revealText').innerHTML += '<div style="margin-top:12px">'+msg+'</div>';
+
+  var nextWrap = document.getElementById('next');
+  if (nextLabel){
+    nextWrap.innerHTML = '<button id="nextBtn">'+nextLabel+' &rarr;</button>';
+    document.getElementById('nextBtn').onclick = function(){
+      revealEl.style.display='none';
+      nextFn();
+    };
+    document.getElementById('takeaway').style.display='none';
+  } else {
+    nextWrap.innerHTML = '<button id="againBtn" style="background:var(--card);color:var(--fg);border:1px solid var(--line)">Run it again</button>';
+    document.getElementById('againBtn').onclick = function(){
+      revealEl.style.display='none';
+      document.getElementById('takeaway').style.display='none';
+      round=1; renderRound1();
+    };
+    document.getElementById('takeaway').style.display='block';
+  }
+  revealEl.style.display='block';
+}
+
+renderRound1();
+</script>
+</body>
+</html>
