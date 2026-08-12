@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is It Alive? Teaching an AI to Tell &middot; Curriculum Unit &middot; Mudaber Jamshaid</title>
+<meta name="description" content="A hands-on K-8 Computer Science and AI unit by Mudaber Jamshaid, standards-aligned to CSTA, ISTE, and NGSS.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%239c4a2c'/%3E%3Ctext x='32' y='44' font-family='Georgia,serif' font-size='34' font-weight='600' fill='%23faf6ef' text-anchor='middle'%3EM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..700&family=Public+Sans:wght@400;550;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+<script src="assets/shared.js"></script>
+</head>
+<body class="doc">
+<div class="topbar">
+  <div class="row">
+    <a class="brand" href="./">Mudaber <em>Jamshaid</em></a>
+    <nav class="topnav">
+      <a href="./#work">Case studies</a>
+      <a href="./#artifacts">Artifacts</a>
+      <a href="./#demo">Live demo</a>
+      <a href="./#research">Research</a>
+    </nav>
+    <button class="theme-btn" onclick="mjToggleTheme()" aria-label="Toggle color theme">&#9681;</button>
+  </div>
+</div>
+
+<div class="narrow">
+  <div class="doc-head">
+    <a class="backlink" href="./#artifacts">&larr; Back to portfolio</a>
+    <div class="kicker" style="margin-top:22px">Curriculum unit &middot; full sample</div>
+    <h1>Is It Alive? Teaching an AI to Tell</h1>
+    <div class="doc-meta">A hands-on K-8 Computer Science and AI unit &middot; Grades 4 to 6 &middot; Five sessions of 45 minutes &middot; No coding required</div>
+  </div>
+
+  <div class="doc-note">I authored this unit as a demonstration of my design process: how a young learner uncovers what machine learning actually is by training a classifier with their own hands. It is an original sample written to show my craft, not a product of any employer.</div>
+
+  <h2>The big idea</h2>
+  <p>Students act as the teacher of a simple image classifier. By collecting their own examples, testing the model, watching it fail, and fixing it, they discover the core truth of machine learning: a model only knows what it has been shown, and a human decides what "good" looks like. The unit ends with each student writing one rule for using AI responsibly, drawn from something their own model got wrong.</p>
+
+  <h2>Standards alignment</h2>
+  <div class="chips" style="margin:10px 0">
+    <span class="chip">CSTA 1B-AP-09: models and simulations</span>
+    <span class="chip">CSTA 1B-IC-18: computing and society</span>
+    <span class="chip">ISTE 1.5 Computational Thinker</span>
+    <span class="chip">ISTE 1.3 Knowledge Constructor</span>
+    <span class="chip green">NGSS SEP-6: constructing explanations</span>
+    <span class="chip green">NGSS SEP-4: analyzing and interpreting data</span>
+  </div>
+  <p class="doc-meta">NGSS Science and Engineering Practices carry the "collect data, test, revise" spine of the unit; CSTA and ISTE carry the computing and computational-thinking outcomes.</p>
+
+  <h2>Learning objectives</h2>
+  <p>By the end of the unit, a student can:</p>
+  <ul>
+    <li>Explain, in their own words, that a model learns from examples a person chooses.</li>
+    <li>Improve a model's accuracy by changing its training data, not its "settings."</li>
+    <li>Identify one case their model gets wrong and explain why, using evidence.</li>
+    <li>State one responsible-use rule that follows from that failure.</li>
+  </ul>
+
+  <h2>Backward design map</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Desired result</th><th>Acceptable evidence</th><th>Learning experience</th></tr>
+    <tr><td>Models learn from human-chosen examples</td><td>Student fixes an error by changing data, not settings</td><td>Sessions 2 and 4: train, then retrain with better data</td></tr>
+    <tr><td>Testing is how you learn what a model knows</td><td>Failure log with predictions and observed results</td><td>Session 3: break it on purpose</td></tr>
+    <tr><td>Responsible use follows from real limitations</td><td>A rule traceable to the student's own failed example</td><td>Session 5: one honest rule</td></tr>
+  </table></div>
+
+  <h2>The five sessions</h2>
+  <div class="step"><span class="time">Session 1 &middot; 45 min</span><div class="t">Sorting without rules</div>
+    Students hand-sort a pile of objects or picture cards into two groups, then try to write the exact rule they used. They discover the rule is hard to pin down, which sets up why we would want a machine to learn from examples instead.</div>
+  <div class="step"><span class="time">Session 2 &middot; 45 min</span><div class="t">Training the machine</div>
+    Using a no-code image trainer, teams collect and label their own examples for two categories and train a classifier. First contact with "the model learns from what I give it."</div>
+  <div class="step"><span class="time">Session 3 &middot; 45 min</span><div class="t">Breaking it on purpose</div>
+    Teams try to fool their own model and log every failure. The engineering practice here is deliberate: predict, test, observe, record.</div>
+  <div class="step"><span class="time">Session 4 &middot; 45 min</span><div class="t">Fixing it with data</div>
+    Teams add examples to fix their failures and re-test, charting accuracy before and after. The insight lands: you improve the model by improving its data.</div>
+  <div class="step"><span class="time">Session 5 &middot; 45 min</span><div class="t">One honest rule</div>
+    Each student writes a single responsible-use rule tied to a real failure their model had, and the class builds a shared "how we use AI" wall.</div>
+
+  <h2>Inside one session: Session 3 at lesson-plan grain</h2>
+  <p>To show the level I plan at, here is Session 3, "Breaking it on purpose," minute by minute.</p>
+  <div class="tablewrap"><table>
+    <tr><th>Minutes</th><th>Segment</th><th>Teacher moves</th><th>Student work</th></tr>
+    <tr><td>0 to 5</td><td>Hook</td><td>Show the class model confidently misclassifying one image; ask "why did it say that?"</td><td>Turn and talk, two predictions per pair</td></tr>
+    <tr><td>5 to 12</td><td>Frame the practice</td><td>Name the loop on the board: predict, test, observe, record; model one row of the failure log</td><td>Copy the loop; set up the team failure log</td></tr>
+    <tr><td>12 to 32</td><td>Team investigation</td><td>Circulate with two probes: "what did you predict first?" and "what will you try next?"</td><td>Teams run trials against their own model and log every result</td></tr>
+    <tr><td>32 to 40</td><td>Evidence circle</td><td>Chart the most surprising failure from each team; press for "what the model has never seen"</td><td>Each team reports one failure with its evidence row</td></tr>
+    <tr><td>40 to 45</td><td>Exit ticket</td><td>Collect and sort tickets into "blames data" vs "blames magic" piles to plan Session 4</td><td>One sentence: why did your model fail, and what would fix it?</td></tr>
+  </table></div>
+
+  <h2>Anticipated misconceptions</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Misconception</th><th>Where it shows up</th><th>Design response</th></tr>
+    <tr><td>"The AI is smart, it thinks like us"</td><td>Session 2, after first successful training</td><td>Session 3 exists to break this: students personally defeat their own model</td></tr>
+    <tr><td>"More examples always fix it"</td><td>Session 4 retraining</td><td>Teams chart accuracy and find that ten near-duplicates help less than three varied examples</td></tr>
+    <tr><td>"The model is wrong, so AI is useless"</td><td>Session 3 debrief</td><td>Evidence circle reframes failure as information: the log tells us exactly what to teach it next</td></tr>
+  </table></div>
+
+  <h2>Formative assessment</h2>
+  <div class="tablewrap"><table>
+    <tr><th>Signal</th><th>Looks like</th><th>When</th></tr>
+    <tr><td>Model-as-learner understanding</td><td>Student changes data, not "settings," to fix an error</td><td>Session 4 exit</td></tr>
+    <tr><td>Evidence-based explanation</td><td>Cites a specific failed example to explain a limitation</td><td>Sessions 3 to 5</td></tr>
+    <tr><td>Responsible-use transfer</td><td>Rule is traceable to a real failure, not a slogan</td><td>Session 5 artifact</td></tr>
+  </table></div>
+
+  <h2>Differentiation and access</h2>
+  <div class="grid2">
+    <div class="mini"><div class="h">Emerging readers</div>Picture-card sorting and spoken explanations replace written logs; sentence stems scaffold the responsible-use rule.</div>
+    <div class="mini"><div class="h">Multilingual learners</div>Category labels in home language first; the build-and-test loop carries meaning without heavy text.</div>
+    <div class="mini"><div class="h">Stretch</div>Teams introduce a deliberately biased training set and predict the failure before testing it.</div>
+    <div class="mini"><div class="h">Motor and access needs</div>Camera work can rotate to any team member; logging roles are interchangeable so every student touches every practice.</div>
+  </div>
+
+  <h2>Why this shape</h2>
+  <p>Every session is a build-test-revise loop, because the fastest way to understand a model is to be the one training it and watching it fail. The abstract idea, that AI reflects the data and the values behind it, arrives through the student's own hands. That is how confidence and creativity actually form, and it is the pedagogy I bring to any computer science and AI curriculum.</p>
+
+  <footer>
+    Unit authored by Mudaber Jamshaid &middot; <a href="./">Portfolio home</a> &middot; <a href="mailto:mudaber.jamshaid@gmail.com">mudaber.jamshaid@gmail.com</a>
+  </footer>
+</div>
+</body>
+</html>
